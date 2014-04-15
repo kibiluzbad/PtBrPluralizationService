@@ -45,6 +45,7 @@
     <Compile Include="Rules\BasicPluralizationRule.cs" />
     <Compile Include="Rules\BasicSingularizeRule.cs" />
     <Compile Include="Rules\IPluralizationRule.cs" />
+    <Compile Include="Rules\SpecialPluralizationRule.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
