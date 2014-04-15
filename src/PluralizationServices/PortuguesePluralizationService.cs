@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Data.Entity.Design.PluralizationServices;
-using System.Text.RegularExpressions;
 using PluralizationServices.Rules;
 
 namespace PluralizationServices
@@ -9,7 +8,8 @@ namespace PluralizationServices
     {
         readonly IList<IPluralizationRule> _pluralizeRules = new IPluralizationRule[]
         {
-            new BasicPluralizationRule()
+            new BasicPluralizationRule(),
+            new SpecialPluralizationRule()
         };
 
         readonly IList<IPluralizationRule> _singularizeRules = new IPluralizationRule[]
