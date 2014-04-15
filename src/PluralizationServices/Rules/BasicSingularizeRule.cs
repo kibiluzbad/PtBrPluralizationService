@@ -4,7 +4,7 @@ namespace PluralizationServices.Rules
 {
     public class BasicSingularizeRule : IPluralizationRule
     {
-        private const string Pattern = "[aeiouã](?<plural>s)";
+        private const string Pattern = "(?<vogal>[aeiouã])s$";
 
         public string Word { get; set; }
 
@@ -15,8 +15,7 @@ namespace PluralizationServices.Rules
 
         public string Apply()
         {
-            return Regex.Replace(Word, Pattern, m =>
-                Word.Replace(m.Groups["plural"].Value, string.Empty));
+            return Regex.Replace(Word, Pattern, m => m.Groups["vogal"].Value);
         }
     }
 }
