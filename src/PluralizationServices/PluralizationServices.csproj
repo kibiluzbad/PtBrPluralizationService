@@ -40,12 +40,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\PhonemeExtension.cs" />
+    <Compile Include="Extensions\TonicAccentExtension.cs" />
     <Compile Include="PortuguesePluralizationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rules\BasicPluralizationRule.cs" />
     <Compile Include="Rules\BasicSingularizeRule.cs" />
     <Compile Include="Rules\IPluralizationRule.cs" />
-    <Compile Include="Rules\SpecialPluralizationRule.cs" />
+    <Compile Include="Rules\SpecialPluralizationRuleEndedInN.cs" />
+    <Compile Include="Rules\SpecialPluralizationRuleEndedInRZ.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

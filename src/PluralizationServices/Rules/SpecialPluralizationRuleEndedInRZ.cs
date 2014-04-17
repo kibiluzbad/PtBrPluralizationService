@@ -2,7 +2,7 @@
 
 namespace PluralizationServices.Rules
 {
-    public class SpecialPluralizationRule : IPluralizationRule
+    public class SpecialPluralizationRuleEndedInRZ : IPluralizationRule
     {
         public string Word { get; set; }
 

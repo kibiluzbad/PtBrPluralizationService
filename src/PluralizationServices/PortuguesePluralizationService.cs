@@ -9,7 +9,8 @@ namespace PluralizationServices
         readonly IList<IPluralizationRule> _pluralizeRules = new IPluralizationRule[]
         {
             new BasicPluralizationRule(),
-            new SpecialPluralizationRule()
+            new SpecialPluralizationRuleEndedInRZ(),
+            new SpecialPluralizationRuleEndedInN()
         };
 
         readonly IList<IPluralizationRule> _singularizeRules = new IPluralizationRule[]

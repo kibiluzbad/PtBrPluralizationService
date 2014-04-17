@@ -15,9 +15,9 @@ namespace PluralizationServices.Tests
         [Fact(DisplayName = "Plural de um substantivo terminando em r")]
         public void PluralDeSubstantivoTerminadoEmR()
         {
-            var plural = _service.Pluralize("junior");
+            var plural = _service.Pluralize("par");
 
-            Assert.Equal("juniores", plural);
+            Assert.Equal("pares", plural);
         }
 
         [Fact(DisplayName = "Plural de um substantivo terminando em z")]
@@ -26,6 +26,14 @@ namespace PluralizationServices.Tests
             var plural = _service.Pluralize("paiz");
 
             Assert.Equal("paizes", plural);
+        }
+
+        [Fact(DisplayName = "Plural de um substantivo terminando em n")]
+        public void PLuralDeSubstantivoTerminadoEmN()
+        {
+            var plural = _service.Pluralize("cânon");
+
+            Assert.Equal("cânones", plural);
         }
     }
 }
