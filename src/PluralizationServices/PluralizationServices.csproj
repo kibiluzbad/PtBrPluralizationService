@@ -49,6 +49,8 @@
     <Compile Include="Rules\IPluralizationRule.cs" />
     <Compile Include="Rules\SpecialPluralizationRuleEndedInN.cs" />
     <Compile Include="Rules\SpecialPluralizationRuleEndedInRZ.cs" />
+    <Compile Include="TonicAccent\ITonicAccent.cs" />
+    <Compile Include="TonicAccent\OxitonaTonicAccent.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

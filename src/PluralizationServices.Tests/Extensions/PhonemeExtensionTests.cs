@@ -38,7 +38,7 @@ namespace PluralizationServices.Tests.Extensions
             Assert.True(letter.IsVowel());
         }
 
-        [Fact(DisplayName = "Vogal b")]
+        [Fact(DisplayName = "Consoante b")]
         public void Consoanteb() 
         {
             const char letter = 'b';
@@ -46,7 +46,7 @@ namespace PluralizationServices.Tests.Extensions
             Assert.True(letter.IsConsonant());
         }
 
-        [Fact(DisplayName = "Vogal B")]
+        [Fact(DisplayName = "Consoante B")]
         public void VogalB() 
         {
             const char letter = 'B';

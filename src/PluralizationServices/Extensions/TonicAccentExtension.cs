@@ -1,31 +1,25 @@
 ﻿using System;
+using PluralizationServices.TonicAccent;
 
-namespace PluralizationServices.Extensions 
+namespace PluralizationServices.Extensions
 {
-    public static class TonicAccentExtension 
+    public static class TonicAccentExtension
     {
-        public static bool IsOxítona(this string word)
+        private static ITonicAccent _tonicAccent;
+
+        public static bool IsOxitona(this string word)
         {
-            var lastPosition = word.Length - 1;
-            var lastCharacter = '\0';
-            if (lastPosition > 0) lastCharacter = char.ToLower(word[lastPosition]);
+            _tonicAccent = new OxitonaTonicAccent();
 
-            var penultimatePosition = word.Length - 2;
-            var penultimateCharacter = '\0';
-            if (penultimatePosition > 0) penultimateCharacter = char.ToLower(word[penultimatePosition]);
-
-            if (lastCharacter.Equals('s') && penultimateCharacter.HasAccent()) return true;
-            if (lastCharacter.HasAccent()) return true;
-
-            return false;
+            return _tonicAccent.Verify(word);
         }
 
-        public static bool IsParoxítona(this string word)
+        public static bool IsParoxitona(this string word)
         {
             throw new NotImplementedException();
         }
-        
-        public static bool IsProparoxítonas(this string word)
+
+        public static bool IsProparoxitonas(this string word)
         {
             throw new NotImplementedException();
         }
