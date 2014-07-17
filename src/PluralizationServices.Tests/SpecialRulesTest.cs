@@ -35,5 +35,29 @@ namespace PluralizationServices.Tests
 
             Assert.Equal("cânones", plural);
         }
+
+        [Fact(DisplayName = "Singular de um substantivo terminando em r")]
+        public void SingularDeSubstantivoTerminadoEmR() 
+        {
+            var plural = _service.Singularize("pares");
+
+            Assert.Equal("par", plural);
+        }
+
+        [Fact(DisplayName = "Singular de um substantivo terminando em z")]
+        public void SingularDeSubstantivoTerminadoEmZ() 
+        {
+            var plural = _service.Singularize("paizes");
+
+            Assert.Equal("paiz", plural);
+        }
+
+        [Fact(DisplayName = "Singular de um substantivo terminando em n")]
+        public void SingularDeSubstantivoTerminadoEmN() 
+        {
+            var plural = _service.Singularize("cânones");
+
+            Assert.Equal("cânon", plural);
+        }
     }
 }

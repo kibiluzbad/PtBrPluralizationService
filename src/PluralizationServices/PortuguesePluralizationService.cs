@@ -8,14 +8,16 @@ namespace PluralizationServices
     {
         readonly IList<IPluralizationRule> _pluralizeRules = new IPluralizationRule[]
         {
-            new BasicPluralizationRule(),
             new SpecialPluralizationRuleEndedInRZ(),
-            new SpecialPluralizationRuleEndedInN()
+            new SpecialPluralizationRuleEndedInN(),
+            new BasicPluralizationRule()
         };
 
         readonly IList<IPluralizationRule> _singularizeRules = new IPluralizationRule[]
         {
-            new BasicSingularizeRule() 
+            new SpecialSingularizeRuleEndedInRZ(),
+            new SpecialSingularizeRuleEndedInN(),
+            new BasicSingularizeRule()
         };
 
         public override bool IsPlural(string word)
@@ -25,6 +27,7 @@ namespace PluralizationServices
                 rule.Word = word;
                 if (rule.Verify()) return false;
             }
+
             return true;
         }
 
@@ -35,6 +38,7 @@ namespace PluralizationServices
                 rule.Word = word;
                 if (rule.Verify()) return false;
             }
+
             return true;
         }
 

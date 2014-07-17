@@ -68,7 +68,6 @@ namespace PluralizationServices.Tests
             var singular = service.Singularize("irmãs");
 
             Assert.Equal("irmã", singular);
-
         }
 
         [Fact(DisplayName = "Singular de um substantivo terminando em ditongo oral")]
@@ -78,7 +77,6 @@ namespace PluralizationServices.Tests
             var singular = service.Singularize("troféus");
 
             Assert.Equal("troféu", singular);
-
         }
 
         [Fact(DisplayName = "Singular de nome de letras")]
@@ -88,7 +86,6 @@ namespace PluralizationServices.Tests
             var singular = service.Singularize("efes");
 
             Assert.Equal("efe", singular);
-
         }
 
         [Fact(DisplayName = "Singular de nome de números")]
@@ -98,8 +95,6 @@ namespace PluralizationServices.Tests
             var singular = service.Singularize("quatros");
 
             Assert.Equal("quatro", singular);
-
         }
-
     }
 }
