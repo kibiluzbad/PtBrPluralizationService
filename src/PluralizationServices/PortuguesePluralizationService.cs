@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Data.Entity.Design.PluralizationServices;
 using PluralizationServices.Rules;
+using PluralizationServices.Rules.RuleEndedInL;
 
 namespace PluralizationServices
 {
@@ -10,6 +11,11 @@ namespace PluralizationServices
         {
             new SpecialPluralizationRuleEndedInRZ(),
             new SpecialPluralizationRuleEndedInN(),
+            new SpecialPluralizationRuleEndedInAl(),
+            new SpecialPluralizationRuleEndedInEl(),
+            new SpecialPluralizationRuleEndedInIl(),
+            new SpecialPluralizationRuleEndedInOl(),
+            new SpecialPluralizationRuleEndedInUl(),
             new BasicPluralizationRule()
         };
 

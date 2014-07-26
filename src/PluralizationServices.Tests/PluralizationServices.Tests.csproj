@@ -49,11 +49,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BasicRulesTest.cs" />
+    <Compile Include="Rules\RuleEndedInL\SpecialRuleEndedInL.cs" />
+    <Compile Include="Rules\BasicRulesTest.cs" />
     <Compile Include="Extensions\PhonemeExtensionTests.cs" />
     <Compile Include="Extensions\TonicAccentExtensionTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SpecialRulesTest.cs" />
+    <Compile Include="Rules\SpecialRulesTest.cs" />
     <Compile Include="TonicAccent\OxitonaTonicAccentTests.cs" />
   </ItemGroup>
   <ItemGroup>

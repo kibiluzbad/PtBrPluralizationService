@@ -3,7 +3,7 @@ using Xunit;
 
 namespace PluralizationServices.Tests.Extensions
 {
-    [Trait("Acento tônico", "Oxítonas, Paroxítonas e Proparoxítonas")]
+    [Trait("Acento tônico", "Oxítonas, paroxítonas e proparoxítonas")]
     public class TonicAccentExtensionTests
     {
         [Fact(DisplayName = "Oxítonas ou agudas")]

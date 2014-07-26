@@ -1,6 +1,6 @@
 ﻿using Xunit;
 
-namespace PluralizationServices.Tests
+namespace PluralizationServices.Tests.Rules
 {
     [Trait("Regras especiais", "Plural e singular")]
     public class SpecialRulesTest
