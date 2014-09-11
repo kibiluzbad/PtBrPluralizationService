@@ -55,8 +55,7 @@ namespace PluralizationServices.Tests.Rules
         [Fact(DisplayName = "Singular de um susbstantivo terminado em vogal")]
         public void SingularDeSubstantivoTerminadoEmVogal()
         {
-            var service = new PortuguesePluralizationService();
-            var singular = service.Singularize("produtos");
+            var singular = _service.Singularize("produtos");
 
             Assert.Equal("produto", singular);
         }
@@ -64,8 +63,7 @@ namespace PluralizationServices.Tests.Rules
         [Fact(DisplayName = "Singular de um substantivo terminando em ã")]
         public void SingularDeSubstantivoTerminadoEmATio()
         {
-            var service = new PortuguesePluralizationService();
-            var singular = service.Singularize("irmãs");
+            var singular = _service.Singularize("irmãs");
 
             Assert.Equal("irmã", singular);
         }
@@ -73,8 +71,7 @@ namespace PluralizationServices.Tests.Rules
         [Fact(DisplayName = "Singular de um substantivo terminando em ditongo oral")]
         public void SingularDeSubstantivoTerminadoEmDitongoOral()
         {
-            var service = new PortuguesePluralizationService();
-            var singular = service.Singularize("troféus");
+            var singular = _service.Singularize("troféus");
 
             Assert.Equal("troféu", singular);
         }
@@ -82,8 +79,7 @@ namespace PluralizationServices.Tests.Rules
         [Fact(DisplayName = "Singular de nome de letras")]
         public void SingularDeNomeDeLetras()
         {
-            var service = new PortuguesePluralizationService();
-            var singular = service.Singularize("efes");
+            var singular = _service.Singularize("efes");
 
             Assert.Equal("efe", singular);
         }
@@ -91,8 +87,7 @@ namespace PluralizationServices.Tests.Rules
         [Fact(DisplayName = "Singular de nome de números")]
         public void SingularDeNomeDeNumeros()
         {
-            var service = new PortuguesePluralizationService();
-            var singular = service.Singularize("quatros");
+            var singular = _service.Singularize("quatros");
 
             Assert.Equal("quatro", singular);
         }
