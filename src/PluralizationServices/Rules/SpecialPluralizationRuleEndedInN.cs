@@ -1,19 +1,18 @@
-﻿using System.Text.RegularExpressions;
-
-namespace PluralizationServices.Rules 
+﻿namespace PluralizationServices.Rules
 {
-    public class SpecialPluralizationRuleEndedInN : IPluralizationRule 
+    using static System.Text.RegularExpressions.Regex;
+
+    internal sealed class SpecialPluralizationRuleEndedInN : PluralizationRule
     {
-        public string Word { get; set; }
+        private const string Pattern = "[n]$";
 
-        public bool Verify() 
+        public SpecialPluralizationRuleEndedInN(string word)
+            : base(word)
         {
-            return Regex.IsMatch(Word, "[n]$", RegexOptions.Compiled | RegexOptions.IgnoreCase | RegexOptions.Singleline);
         }
 
-        public string Apply() 
-        {
-            return string.Concat(Word, "es");
-        }
+        internal override bool Verify() => IsMatch(this.Word, Pattern, RegexOptions);
+
+        internal override string Apply() => $"{this.Word}es";
     }
 }

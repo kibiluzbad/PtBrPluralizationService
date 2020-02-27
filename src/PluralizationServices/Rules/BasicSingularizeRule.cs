@@ -1,21 +1,18 @@
-﻿using System.Text.RegularExpressions;
-
-namespace PluralizationServices.Rules
+﻿namespace PluralizationServices.Rules
 {
-    public class BasicSingularizeRule : IPluralizationRule
+    using static System.Text.RegularExpressions.Regex;
+
+    internal sealed class BasicSingularizeRule : PluralizationRule
     {
         private const string Pattern = "(?<vogal>[aeiouã])s$";
 
-        public string Word { get; set; }
-
-        public bool Verify()
+        public BasicSingularizeRule(string word)
+            : base(word)
         {
-            return Regex.IsMatch(Word, Pattern, RegexOptions.Compiled | RegexOptions.IgnoreCase | RegexOptions.Singleline);
         }
 
-        public string Apply()
-        {
-            return Regex.Replace(Word, Pattern, m => m.Groups["vogal"].Value);
-        }
+        internal override bool Verify() => IsMatch(this.Word, Pattern, RegexOptions);
+
+        internal override string Apply() => Replace(this.Word, Pattern, m => m.Groups["vogal"].Value);
     }
 }

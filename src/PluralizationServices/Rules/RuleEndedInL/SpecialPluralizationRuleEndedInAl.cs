@@ -1,28 +1,27 @@
-﻿using System.Collections.Generic;
-using System.Text.RegularExpressions;
-
-namespace PluralizationServices.Rules.RuleEndedInL 
+﻿namespace PluralizationServices.Rules.RuleEndedInL
 {
-    public class SpecialPluralizationRuleEndedInAl : IPluralizationRule
+    using System.Collections.Generic;
+
+    using static System.Text.RegularExpressions.Regex;
+
+    internal sealed class SpecialPluralizationRuleEndedInAl : PluralizationRule
     {
-        private readonly IDictionary<string, string> _exceptions  = new Dictionary<string, string> 
+        private const string Pattern = "al$";
+        private static readonly IReadOnlyDictionary<string, string> Exceptions = new Dictionary<string, string>
         {
-            {"mal", "males"},
-            {"real", "réis"}
+            { "mal", "males" },
+            { "real", "réis" },
         };
 
-        private const string Pattern = "al$";
-
-        public string Word { get; set; }
-
-        public bool Verify()
+        public SpecialPluralizationRuleEndedInAl(string word)
+            : base(word)
         {
-            return _exceptions.ContainsKey(Word) || Regex.IsMatch(Word, Pattern, RegexOptions.Compiled | RegexOptions.IgnoreCase | RegexOptions.Singleline);
         }
 
-        public string Apply()
-        {
-            return _exceptions.ContainsKey(Word) ? _exceptions[Word] : Regex.Replace(Word, Pattern, "ais");
-        }
+        internal override bool Verify() => Exceptions.ContainsKey(this.Word) || IsMatch(this.Word, Pattern, RegexOptions);
+
+        internal override string Apply() => Exceptions.ContainsKey(this.Word)
+            ? Exceptions[this.Word]
+            : Replace(this.Word, Pattern, "ais");
     }
 }

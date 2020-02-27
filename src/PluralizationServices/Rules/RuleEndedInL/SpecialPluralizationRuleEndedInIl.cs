@@ -1,24 +1,28 @@
-﻿using System.Text.RegularExpressions;
-
-namespace PluralizationServices.Rules.RuleEndedInL 
+﻿namespace PluralizationServices.Rules.RuleEndedInL
 {
-    public class SpecialPluralizationRuleEndedInIl : IPluralizationRule 
+    using static System.Text.RegularExpressions.Regex;
+
+    using static PluralizationServices.Rules.PluralizationRule;
+
+    internal sealed class SpecialPluralizationRuleEndedInIl : PluralizationRule
     {
         private const string Pattern = "il$";
 
-        public string Word { get; set; }
-
-        public bool Verify() 
+        public SpecialPluralizationRuleEndedInIl(string word)
+            : base(word)
         {
-            return Regex.IsMatch(Word, Pattern, RegexOptions.Compiled | RegexOptions.IgnoreCase | RegexOptions.Singleline);
         }
 
-        public string Apply()
-        {
-            if (Regex.IsMatch(Word, "[áéêíó]", RegexOptions.Compiled | RegexOptions.IgnoreCase | RegexOptions.Singleline))
-                return Regex.Replace(Word, Pattern, "eis");
+        internal override bool Verify() => IsMatch(this.Word, Pattern, RegexOptions);
 
-            return Regex.Replace(Word, Pattern, "is");
+        internal override string Apply()
+        {
+            if (IsMatch(this.Word, "[áéêíó]", RegexOptions))
+            {
+                return Replace(this.Word, Pattern, "eis");
+            }
+
+            return Replace(this.Word, Pattern, "is");
         }
     }
 }
