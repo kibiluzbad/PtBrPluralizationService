@@ -1,45 +1,25 @@
-﻿using System.Globalization;
-using System.Linq;
-using System.Text.RegularExpressions;
-
-namespace PluralizationServices.Extensions 
+﻿namespace PluralizationServices.Extensions
 {
+    using System.Text.RegularExpressions;
+
+    using static System.Char;
+    using static System.Globalization.CultureInfo;
+    using static System.Text.RegularExpressions.Regex;
+    using static System.Text.RegularExpressions.RegexOptions;
+
     public static class PhonemeExtension
     {
-        private const RegexOptions OptionsRegex = RegexOptions.Compiled | RegexOptions.IgnoreCase | RegexOptions.Singleline;
+        private const RegexOptions OptionsRegex = Compiled | IgnoreCase | Singleline;
 
-        public static bool HasAccent(this char letter)
+        public static bool HasAccent(this char letter) => IsMatch(letter.ToString(InvariantCulture), "[áéíóúàèìòùâêîôûäëïöüãõ]", OptionsRegex);
+
+        public static bool IsVowel(this char letter) => HasAccent(letter) || IsMatch(letter.ToString(InvariantCulture), "[aeiou]", OptionsRegex);
+
+        public static bool IsConsonant(this char letter) => letter switch
         {
-            var input = letter.ToString(CultureInfo.InvariantCulture);
-
-            const string vowelsWithAccentsPattern = "[áéíóúàèìòùâêîôûäëïöüãõ]";
-
-            return Regex.IsMatch(input, vowelsWithAccentsPattern, OptionsRegex);
-        }
-
-        public static bool IsVowel(this char letter)
-        {
-            var input = letter.ToString(CultureInfo.InvariantCulture);
-
-            if (HasAccent(letter)) return true;
-
-            const string vowelsWithoutAccentsPattern = "[aeiou]";
-            if (Regex.IsMatch(input, vowelsWithoutAccentsPattern, OptionsRegex)) return true;
-
-            return false;
-        }
-
-        public static bool IsConsonant(this char letter)
-        {
-            if (letter.Equals('\0')) return true;
-            if (!char.IsDigit(letter) && !IsVowel(letter)) return true;
-
-            return false;
-        }
-
-        public static bool In(this char letter, char[] collection)
-        {
-            return collection.Any(item => item.Equals(letter));
-        }
+            '\0' => true,
+            { } when !IsDigit(letter) && !IsVowel(letter) => true,
+            _ => false
+        };
     }
 }

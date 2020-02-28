@@ -1,70 +1,62 @@
-﻿using System.Collections.Generic;
-using System.Data.Entity.Design.PluralizationServices;
-using PluralizationServices.Rules;
-using PluralizationServices.Rules.RuleEndedInL;
-
-namespace PluralizationServices
+﻿namespace PluralizationServices
 {
-    public class PortuguesePluralizationService : PluralizationService
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+
+    using PluralizationServices.Rules;
+    using PluralizationServices.Rules.RuleEndedInL;
+
+    public sealed class PortuguesePluralizationService : IPluralizationService
     {
-        readonly IList<IPluralizationRule> _pluralizeRules = new IPluralizationRule[]
+        private static readonly IReadOnlyList<Func<string, PluralizationRule>> PluralizeRules = new List<Func<string, PluralizationRule>>
         {
-            new SpecialPluralizationRuleEndedInRZ(),
-            new SpecialPluralizationRuleEndedInN(),
-            new SpecialPluralizationRuleEndedInAl(),
-            new SpecialPluralizationRuleEndedInEl(),
-            new SpecialPluralizationRuleEndedInIl(),
-            new SpecialPluralizationRuleEndedInOl(),
-            new SpecialPluralizationRuleEndedInUl(),
-            new BasicPluralizationRule()
+            world => new SpecialPluralizationRuleEndedInRZ(world),
+            world => new SpecialPluralizationRuleEndedInN(world),
+            world => new SpecialPluralizationRuleEndedInAl(world),
+            world => new SpecialPluralizationRuleEndedInEl(world),
+            world => new SpecialPluralizationRuleEndedInIl(world),
+            world => new SpecialPluralizationRuleEndedInOl(world),
+            world => new SpecialPluralizationRuleEndedInUl(world),
+            world => new BasicPluralizationRule(world),
         };
 
-        readonly IList<IPluralizationRule> _singularizeRules = new IPluralizationRule[]
+        private static readonly IReadOnlyList<Func<string, PluralizationRule>> SingularizeRules = new List<Func<string, PluralizationRule>>
         {
-            new SpecialSingularizeRuleEndedInRZ(),
-            new SpecialSingularizeRuleEndedInN(),
-            new BasicSingularizeRule()
+            world => new SpecialSingularizeRuleEndedInRZ(world),
+            world => new SpecialSingularizeRuleEndedInN(world),
+            world => new BasicSingularizeRule(world),
         };
 
-        public override bool IsPlural(string word)
+        public bool IsPlural(string word) => PluralizeRules.All(newRule => !newRule(word).Verify());
+
+        public bool IsSingular(string word) => SingularizeRules.All(newRule => !newRule(word).Verify());
+
+        public string Pluralize(string word)
         {
-            foreach (var rule in _pluralizeRules)
+            foreach (var newRule in PluralizeRules)
             {
-                rule.Word = word;
-                if (rule.Verify()) return false;
-            }
+                var rule = newRule(word);
 
-            return true;
-        }
-
-        public override bool IsSingular(string word)
-        {
-            foreach (var rule in _singularizeRules)
-            {
-                rule.Word = word;
-                if (rule.Verify()) return false;
-            }
-
-            return true;
-        }
-
-        public override string Pluralize(string word)
-        {
-            foreach (var rule in _pluralizeRules)
-            {
-                rule.Word = word;
-                if (rule.Verify()) return rule.Apply();
+                if (rule.Verify())
+                {
+                    return rule.Apply();
+                }
             }
 
             return word;
         }
 
-        public override string Singularize(string word)
+        public string Singularize(string word)
         {
-            foreach (var rule in _singularizeRules)
+            foreach (var newRule in SingularizeRules)
             {
-                rule.Word = word;
-                if (rule.Verify()) return rule.Apply();
+                var rule = newRule(word);
+
+                if (rule.Verify())
+                {
+                    return rule.Apply();
+                }
             }
 
             return word;

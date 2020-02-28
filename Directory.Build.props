@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+
+  <PropertyGroup>
+    <Language>C#</Language>
+    <LangVersion>8.0</LangVersion>
+    <NoWarn>1591</NoWarn>
+
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/kibiluzbad/PtBrPluralizationService</RepositoryUrl>
+
+    <Authors>kibiluzbad</Authors>
+    <Owners>kibiluzbad</Owners>
+    <Description>pt-BR Pluralizer.</Description>
+    <Copyright>© Copyright (c) 2020.</Copyright>
+    <PackageProjectUrl>https://github.com/kibiluzbad/PtBrPluralizationService</PackageProjectUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/kibiluzbad/PtBrPluralizationService/master/docs/logo.png</PackageIconUrl>
+  </PropertyGroup>
+
+  <!-- C# 8 nullability checks -->
+  <PropertyGroup>
+    <Nullable>enable</Nullable>
+    <NullableContextOptions>enable</NullableContextOptions>
+    <NullableReferenceTypes>true</NullableReferenceTypes>
+  </PropertyGroup>
+
+  <!-- Support for building in Visual Studio versions 15.9 and up -->
+  <PropertyGroup Condition="'$(MSBuildVersion)' >= '15.9'">
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Include LICENSE.txt.txt file as licenseUrl has been deprecated in NuGet -->
+    <None Include="$(MSBuildThisFileDirectory)\LICENSE.txt" Pack="true" PackagePath="$(PackageLicenseFile)"/>
+  </ItemGroup>
+
+  <!-- Support for building in Visual Studio versions before 15.9 -->
+  <PropertyGroup Condition="'$(MSBuildVersion)' &lt; '15.9'">
+    <PackageLicenseUrl>https://github.com/kibiluzbad/PtBrPluralizationService/blob/master/LICENSE.txt</PackageLicenseUrl>
+    <!-- Disable licenseUrl deprecation warning in later versions of VS -->
+    <NoWarn>NU5125</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Code Analysis">
+    <CodeAnalysisRuleSet>$(MSBuildThisFileDirectory)code-analysis.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+
+  <ItemGroup Label="NuGet">
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118" PrivateAssets="All" />
+  </ItemGroup>
+
+</Project>

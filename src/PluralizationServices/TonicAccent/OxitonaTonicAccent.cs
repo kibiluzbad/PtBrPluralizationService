@@ -1,19 +1,15 @@
-﻿using System.Text.RegularExpressions;
-
-namespace PluralizationServices.TonicAccent
+﻿namespace PluralizationServices.TonicAccent
 {
-    public class OxitonaTonicAccent : ITonicAccent
+    using static System.Text.RegularExpressions.Regex;
+
+    using static PluralizationServices.TonicAccent.ITonicAccent;
+
+    internal sealed class OxitonaTonicAccent : ITonicAccent
     {
-        public bool Verify(string word)
-        {
-            word = RemovePronoun(word);
+        private const string Pattern = "[áâéêóôiíuú]s?$|m$|ns$";
 
-            return Regex.IsMatch(word, "[áâéêóôiíuú]s?$|m$|ns$", RegexOptions.Compiled | RegexOptions.IgnoreCase | RegexOptions.Singleline);
-        }
+        public bool Verify(string word) => IsMatch(RemovePronoun(word), Pattern, RegexOptions);
 
-        private static string RemovePronoun(string word)
-        {
-            return word.Split('-')[0];
-        }
+        private static string RemovePronoun(string word) => word.Split('-')[0];
     }
 }

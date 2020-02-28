@@ -1,19 +1,18 @@
-﻿using System.Text.RegularExpressions;
-
-namespace PluralizationServices.Rules
+﻿namespace PluralizationServices.Rules
 {
-    public class BasicPluralizationRule : IPluralizationRule
+    using static System.Text.RegularExpressions.Regex;
+
+    internal sealed class BasicPluralizationRule : PluralizationRule
     {
-        public string Word { get; set; }
+        private const string Pattern = "[aeiouã]$";
 
-        public bool Verify()
+        public BasicPluralizationRule(string word)
+            : base(word)
         {
-            return Regex.IsMatch(Word, "[aeiouã]$", RegexOptions.Compiled | RegexOptions.IgnoreCase | RegexOptions.Singleline);
         }
 
-        public string Apply()
-        {
-            return string.Concat(Word, "s");
-        }
+        internal override bool Verify() => IsMatch(this.Word, Pattern, RegexOptions);
+
+        internal override string Apply() => $"{this.Word}s";
     }
 }

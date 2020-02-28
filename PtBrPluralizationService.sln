@@ -1,0 +1,97 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29728.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{DE44C5CE-D003-48B4-A622-F172D13A2158}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\nuget.exe = .nuget\nuget.exe
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{B5D7D384-2D51-403C-9DFA-202F5478EE14}"
+	ProjectSection(SolutionItems) = preProject
+		src\Directory.Build.props = src\Directory.Build.props
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6E34CB25-3764-491A-9A0E-4A2F043C818E}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		.travis.yml = .travis.yml
+		after.PtBrPluralizationService.sln.targets = after.PtBrPluralizationService.sln.targets
+		build.cake = build.cake
+		build.ps1 = build.ps1
+		build.sh = build.sh
+		cake.config = cake.config
+		code-analysis.ruleset = code-analysis.ruleset
+		Directory.Build.props = Directory.Build.props
+		Directory.Build.targets = Directory.Build.targets
+		License.txt = License.txt
+		NuGet.config = NuGet.config
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{70FE29E9-3713-4699-A69F-5AD67CE9AE63}"
+	ProjectSection(SolutionItems) = preProject
+		test\Directory.Build.props = test\Directory.Build.props
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PluralizationServices", "src\PluralizationServices\PluralizationServices.csproj", "{61CA00E0-8B4E-44C1-B592-BB4D651C3CC2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PluralizationServices.Tests", "test\unit\PluralizationServices.Tests\PluralizationServices.Tests.csproj", "{AFEA46DB-197E-41B6-B73F-8946600ED291}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "unit", "unit", "{7F9FC804-6E03-4904-9A56-1CB1887D7396}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{55126D67-D024-4591-A12E-28F5D908E60F}"
+	ProjectSection(SolutionItems) = preProject
+		build\build-solution.cake = build\build-solution.cake
+		build\data.cake = build\data.cake
+		build\delete-temp-directories.cake = build\delete-temp-directories.cake
+		build\helpers.cake = build\helpers.cake
+		build\restore-nuget-packages.cake = build\restore-nuget-packages.cake
+		build\run-tests.cake = build\run-tests.cake
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{3E808FFC-49F5-4459-B337-6E2A6D680810}"
+	ProjectSection(SolutionItems) = preProject
+		docs\logo.png = docs\logo.png
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".config", ".config", "{408BB9BA-A630-4444-A848-F7BBE3E7618D}"
+	ProjectSection(SolutionItems) = preProject
+		.config\dotnet-tools.json = .config\dotnet-tools.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tools", "tools", "{C26E1C53-0816-4E06-B1DC-F7C7C305D18F}"
+	ProjectSection(SolutionItems) = preProject
+		tools\packages.config = tools\packages.config
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{61CA00E0-8B4E-44C1-B592-BB4D651C3CC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61CA00E0-8B4E-44C1-B592-BB4D651C3CC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61CA00E0-8B4E-44C1-B592-BB4D651C3CC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61CA00E0-8B4E-44C1-B592-BB4D651C3CC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFEA46DB-197E-41B6-B73F-8946600ED291}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFEA46DB-197E-41B6-B73F-8946600ED291}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFEA46DB-197E-41B6-B73F-8946600ED291}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFEA46DB-197E-41B6-B73F-8946600ED291}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{61CA00E0-8B4E-44C1-B592-BB4D651C3CC2} = {B5D7D384-2D51-403C-9DFA-202F5478EE14}
+		{AFEA46DB-197E-41B6-B73F-8946600ED291} = {7F9FC804-6E03-4904-9A56-1CB1887D7396}
+		{7F9FC804-6E03-4904-9A56-1CB1887D7396} = {70FE29E9-3713-4699-A69F-5AD67CE9AE63}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FCB32085-7D39-47C3-A589-724AFB65C9B3}
+	EndGlobalSection
+EndGlobal

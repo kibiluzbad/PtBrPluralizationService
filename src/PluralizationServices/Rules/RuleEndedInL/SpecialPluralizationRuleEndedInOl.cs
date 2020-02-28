@@ -1,21 +1,18 @@
-﻿using System.Text.RegularExpressions;
-
-namespace PluralizationServices.Rules.RuleEndedInL 
+﻿namespace PluralizationServices.Rules.RuleEndedInL
 {
-    public class SpecialPluralizationRuleEndedInOl : IPluralizationRule 
+    using static System.Text.RegularExpressions.Regex;
+
+    internal sealed class SpecialPluralizationRuleEndedInOl : PluralizationRule
     {
         private const string Pattern = "ol$";
 
-        public string Word { get; set; }
-
-        public bool Verify() 
+        public SpecialPluralizationRuleEndedInOl(string word)
+            : base(word)
         {
-            return Regex.IsMatch(Word, Pattern, RegexOptions.Compiled | RegexOptions.IgnoreCase | RegexOptions.Singleline);
         }
 
-        public string Apply()
-        {
-            return Regex.Replace(Word, Pattern, "óis");
-        }
+        internal override bool Verify() => IsMatch(this.Word, Pattern, RegexOptions);
+
+        internal override string Apply() => Replace(this.Word, Pattern, "óis");
     }
 }
