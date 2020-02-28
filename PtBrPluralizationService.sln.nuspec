@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package >
+  <metadata>
+    <id>PluralizationServices</id>
+    <version>1.0.0</version>
+    <authors>leonardo</authors>
+    <owners>leonardo</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <projectUrl>https://github.com/kibiluzbad/PtBrPluralizationService</projectUrl>
+    <iconUrl>https://github.com/kibiluzbad/PtBrPluralizationService/raw/master/docs/logo.png</iconUrl>
+    <description>Pt-Br pluralizer</description>
+    <releaseNotes>.Net Core Version.</releaseNotes>
+    <copyright>Copyright 2020</copyright>
+    <tags>Pluralizer PtBr Portuguese Plural</tags>
+    <dependencies>
+      <group targetFramework=".NETStandard2.1">
+        <dependency id="SampleDependency" version="1.0.0" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>
